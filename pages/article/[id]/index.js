@@ -33,7 +33,8 @@ const Article = ({article}) => {
 
 export const getStaticProps = async (context) => {
 
-    const res = await fetch(`${server}/api/article/${context.params.id}`);
+    //const res = await fetch(`${server}/api/article/${context.params.id}`);
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${context.params.id}`);
     const article = await res.json();
 
     return{
@@ -46,7 +47,8 @@ export const getStaticProps = async (context) => {
 
 export const getStaticPaths = async (context) => {
 
-    const res = await fetch(`${server}/api/article`);
+    //const res = await fetch(`${server}/api/article`);
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
     const articles = await res.json();
     
     const ids = articles.map((article) => article.id);
